@@ -41,5 +41,10 @@ public class ControlPanelView extends JFrame{
 		
 		this.getContentPane().setBackground(this.classicBackgroundColor);
 	}
+	
+	public void showWindow()
+	{
+		this.setVisible(true);
+	}
 
 }
