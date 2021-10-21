@@ -40,6 +40,7 @@ public class ControlPanelView extends JFrame{
 		this.setResizable(false);
 		
 		this.initFrameSection();
+		this.initSettingsSection();
 		this.getContentPane().setBackground(this.classicBackgroundColor);
 	}
 	
@@ -110,6 +111,52 @@ public class ControlPanelView extends JFrame{
 		
 		framePanel.add(bottomPanel);
 		this.add(framePanel);
+	}
+	
+	private void initSettingsSection()
+	{
+		JPanel settingsPanel = new JPanel(null);
+		settingsPanel.setBounds(50,505,800,395);
+		settingsPanel.setBackground(this.classicBackgroundColor);
+		settingsPanel.setBorder(BorderFactory.createTitledBorder("HSV Settings"));
+		
+		this.hLow = new JSlider(0,255);
+		this.hHigh = new JSlider(0,255);
+		this.sLow = new JSlider(0,255);
+		this.sHigh = new JSlider(0,255);
+		this.vLow = new JSlider(0,255);
+		this.vHigh = new JSlider(0,255);
+		
+		settingsPanel.add(addSlider(this.hLow, 20, "low__h value"));
+		settingsPanel.add(addSlider(this.hHigh, 80, "high_h value"));
+		settingsPanel.add(addSlider(this.sLow, 140, "low__s value"));
+		settingsPanel.add(addSlider(this.sHigh, 200, "high_s value"));
+		settingsPanel.add(addSlider(this.vLow, 260, "low__v value"));
+		settingsPanel.add(addSlider(this.vHigh, 320, "high_v value"));
+		this.add(settingsPanel);
+	}
+	
+	private JPanel addSlider(JSlider slider, int yPos, String label)
+	{
+		JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING,40,10));
+		panel.setBackground(this.classicBackgroundColor);
+		panel.setBounds(20,yPos,700,70);
+		
+		slider.setFocusable(false);
+		slider.setBackground(this.classicBackgroundColor);
+		slider.setPaintTicks(true);
+		slider.setMinorTickSpacing(10);
+		slider.setPaintTrack(true);
+		slider.setFont(new Font("Arial", Font.BOLD, 8));
+		slider.setMajorTickSpacing(25);
+		slider.setPaintLabels(true);
+		slider.setValue(0);
+		slider.setPreferredSize(new Dimension(500,40));
+		
+		panel.add(new JLabel(label));
+		panel.add(slider);
+		
+		return panel;
 	}
 	
 }
