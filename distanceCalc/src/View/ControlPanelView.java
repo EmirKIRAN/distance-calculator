@@ -41,6 +41,7 @@ public class ControlPanelView extends JFrame{
 		
 		this.initFrameSection();
 		this.initSettingsSection();
+		this.initDistanceSection();
 		this.getContentPane().setBackground(this.classicBackgroundColor);
 	}
 	
@@ -134,6 +135,27 @@ public class ControlPanelView extends JFrame{
 		settingsPanel.add(addSlider(this.vLow, 260, "low__v value"));
 		settingsPanel.add(addSlider(this.vHigh, 320, "high_v value"));
 		this.add(settingsPanel);
+	}
+	
+	private void initDistanceSection()
+	{
+		JPanel valuesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER,150,20));
+		valuesPanel.setBorder(BorderFactory.createTitledBorder("Output values"));
+		valuesPanel.setBounds(50, 900, 800, 80);
+		valuesPanel.setBackground(this.classicBackgroundColor);
+		
+		this.distanceValue = new JLabel("DISTANCE : ");
+		this.distanceValue.setForeground(new Color(106, 176, 76));
+		this.angleValue = new JLabel("ANGLE : ");
+		this.angleValue.setForeground(new Color(106, 176, 76));
+		this.directionValue = new JLabel("DIRECTION : - ");
+		this.directionValue.setForeground(new Color(106, 176, 76));
+		
+		valuesPanel.add(this.distanceValue);
+		valuesPanel.add(this.angleValue);
+		valuesPanel.add(this.directionValue);
+		
+		this.add(valuesPanel);
 	}
 	
 	private JPanel addSlider(JSlider slider, int yPos, String label)
