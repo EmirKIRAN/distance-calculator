@@ -1,5 +1,7 @@
 package Main;
 
+import org.opencv.core.Core;
+
 import View.ControlPanelView;
 
 public class Main {
